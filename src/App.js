@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+import Draggable from 'react-draggable';
+ 
+class App extends React.Component {
+ 
+  render() {
+    return (
+      <Draggable
+        axis="both"
+        handle=".handle"
+        defaultPosition={{x: 0, y: 0}}
+        position={null}
+        grid={[25, 25]}
+        scale={1}
+        onStart={this.handleStart}
+        onDrag={this.handleDrag}
+        onStop={this.handleStop}>
+        <div>
+          <div className="handle">Drag from here</div>
+          <div>This readme is really dragging on...</div>
+        </div>
+      </Draggable>
+    );
+  }
 }
 
-export default App;
+export default App

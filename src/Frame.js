@@ -5,7 +5,6 @@ import Draggable from 'react-draggable';
 class Frame extends react.Component {
 
     render() {
-
         return(
             <Draggable
                 axis="both"

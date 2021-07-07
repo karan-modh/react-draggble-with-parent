@@ -19,15 +19,14 @@ class Frame extends react.Component {
                 onStart={this.handleStart}
                 onDrag={this.handleDrag}
                 onStop={this.handleStop}>
-                <div className={"frame_content frame_"+this.props.name}>
-                    <div className="frame_title">Click {this.props.name}</div>
-                    <span>
+                <div className="frame_content" style={{width: this.props.width}}>
+                    <div className={"frame_title frame_"+this.props.name}>Click {this.props.name}</div>
+                    {/* <div className="child_frames"> */}
                         &nbsp; &nbsp;
                         <br/>
                         &nbsp; &nbsp;
                         {this.props.Children}
-
-                    </span>
+                    {/* </div> */}
                 </div>
             </Draggable>
         );

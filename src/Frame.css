@@ -1,5 +1,5 @@
 .frame_content {
-    display: block;
+    display: inline-block;
     width: 10%;
     height: auto;
     background: rgb(131, 131, 131);

@@ -8,8 +8,8 @@ class Frame extends react.Component {
         return(
             <Draggable
                 axis="both"
-                bound="parent"
-                offsetParent={document.querySelector('.content_body')}
+                bounds="parent"
+                // offsetParent={document.querySelector('.content_body')}
                 handle=".handle"
                 defaultPosition={{x: 0, y: 0}}
                 position={null}
@@ -18,18 +18,15 @@ class Frame extends react.Component {
                 onStart={this.handleStart}
                 onDrag={this.handleDrag}
                 onStop={this.handleStop}>
-                <div>
-                    <div className="frame_content">
-                        <div className="frame_title handle">Click {this.props.name}</div>
-                        <span>
-                            &nbsp;<br />
-                            &nbsp;
+                <div className="frame_content handle">
+                    <div className="frame_title">Click {this.props.name}</div>
+                    <span>
+                        &nbsp;<br />
+                        &nbsp;
 
-                        </span>
-                    </div>
+                    </span>
                 </div>
             </Draggable>
-            
         );
     }
 }

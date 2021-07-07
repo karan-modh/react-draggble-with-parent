@@ -1,13 +1,14 @@
 .frame_content {
     display: block;
-    width: 250px;
-    height: 250px;
+    width: 10%;
+    height: auto;
     background: rgb(131, 131, 131);
 }
 
 .frame_title {
+    color: white;
     display: block;
-    width: 250px;
-    height: 50px;
+    width: match-parent;
+    height: 35px;
     background: red;
 }

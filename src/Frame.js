@@ -2,31 +2,14 @@ import react from 'react';
 import './Frame.css';
 import Draggable from 'react-draggable';
 
-
 class Frame extends react.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         containerId: "",
-    //         parent: ""
-    //     };
-    // }
-
-    // componentDidMount() {
-    //     this.setState({
-    //         containerId: reactDom.findDOMNode(this).parentNode.getAttribute("id"),
-    //         parent: reactDom.findDOMNode(this).parentNode
-    //     });
-    //     console.log(this.state.containerId);
-    //     console.log(this.state.parent);
-    // }
 
     render() {
         return(
             <Draggable
                 axis="both"
                 bound="parent"
-                // offsetParent={this.state.parent}
+                offsetParent={document.querySelector('.content_body')}
                 handle=".handle"
                 defaultPosition={{x: 0, y: 0}}
                 position={null}
@@ -36,8 +19,14 @@ class Frame extends react.Component {
                 onDrag={this.handleDrag}
                 onStop={this.handleStop}>
                 <div>
-                    <div className="frame_title handle"/>
-                    <div className="frame_content" />
+                    <div className="frame_content">
+                        <div className="frame_title handle">Click {this.props.name}</div>
+                        <span>
+                            &nbsp;<br />
+                            &nbsp;
+
+                        </span>
+                    </div>
                 </div>
             </Draggable>
             

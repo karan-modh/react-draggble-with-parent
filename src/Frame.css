@@ -1,14 +1,16 @@
 .frame_content {
-    display: inline-block;
-    width: 10%;
+    display: flex;
+    max-width: fit-content;
+    /* width: 100px; */
     height: auto;
     background: rgb(131, 131, 131);
+
 }
 
 .frame_title {
     color: white;
     display: block;
     width: match-parent;
-    height: 35px;
+    height: max-content;
     background: red;
 }

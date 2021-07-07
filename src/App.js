@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 // import { Button } from './Button';
 import Frame from './Frame';
 import './App.css';
@@ -8,7 +8,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			containers: [<Frame key={0} name="1"/>],
+			containers: [<Frame key={1} name="1"/>],
 			numContainers: 1
 		}
 
@@ -21,7 +21,7 @@ class App extends React.Component {
 		console.log(numContainers);
 
 		this.setState({
-			containers: containers.concat(<Frame key={numContainers+1} name={(numContainers+1).toString()}/>),
+			containers: [<Frame key={numContainers+1} name={(numContainers+1).toString()} Children={containers[0]} />],
 			numContainers: numContainers + 1
 		});
 	}

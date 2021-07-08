@@ -9,12 +9,6 @@
     color: white;
     display: block;
     width: match-parent;
-    height: max-content;
+    height: 23px;
     background: red;
 }
-/* 
-.child_frames {
-    display: block;
-    background-color: darkgrey;
-    width: 50%;
-} */

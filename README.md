@@ -24,3 +24,6 @@ You will also see any lint errors in the console.
 
 The following gif shows the working demo of the same.
 ![Draggable Window GIF](draggable_window_gif.gif)
+
+New gif with positional changes.
+![Draggable Window GIF](DraagableFramesUpdated.gif)

@@ -1,4 +1,5 @@
 .frame_content {
+    position: absolute;
     display: block;
     height: auto;
     background: rgb(255, 255, 255);

@@ -5,14 +5,18 @@ import Draggable from 'react-draggable';
 class Frame extends react.Component {
 
     handleStop = (event,data) => {
-        console.log(data);
+        console.log(data)
+        var idx = this.props.containers.length - this.props.idx;
+        this.props.setFramePos(data.x, data.y, this.props.containers[idx].name);
     };
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
+        const idx = this.props.containers.length - this.props.idx;
+        // console.log(idx);
         var child_frame;
-        if (this.props.containers.child && Object.keys(this.props.containers.child).length !== 0 ) {
-            child_frame = <Frame containers={this.props.containers.child} setFramePos={this.props.setFramePos}/>
+        if (idx > 0) {
+            child_frame = <Frame containers={this.props.containers} idx={this.props.idx+1} setFramePos={this.props.setFramePos} />
         }
         else {
             child_frame = <div></div>
@@ -21,14 +25,14 @@ class Frame extends react.Component {
             <Draggable
                 axis="both"
                 bounds="parent"
-                handle={".frame_"+this.props.containers.name}
-                defaultPosition={{x:this.props.containers.x, y:this.props.containers.y}}
+                handle={".frame_"+this.props.containers[idx].name}
+                defaultPosition={{x:this.props.containers[idx].x, y:this.props.containers[idx].y}}
                 // position={null}
                 grid={[25, 25]}
                 scale={1}
                 onStop={this.handleStop}>
-                <div className="frame_content" style={{width: this.props.containers.width, height: this.props.containers.height}}>
-                    <div className={"frame_title frame_"+this.props.containers.name} >Click {this.props.containers.name}</div>
+                <div className="frame_content" style={{width: this.props.containers[idx].width, height: this.props.containers[idx].height}}>
+                    <div className={"frame_title frame_"+this.props.containers[idx].name} >Click {this.props.containers[idx].name}</div>
                     {child_frame}
                 </div>
             </Draggable>

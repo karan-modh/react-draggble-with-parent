@@ -122,7 +122,7 @@ class App extends React.Component {
 		var last_x;
 		if(last_frame.x + last_frame.width + 150 > window.innerWidth){
 			new_x = last_frame.x - 150;
-			last_x = 150;
+			last_x = 148;
 		}
 		else{
 			new_x = last_frame.x;
@@ -134,16 +134,16 @@ class App extends React.Component {
 		var last_y;
 		if(last_frame.y + last_frame.height + 50 > window.innerHeight){
 			new_y = last_frame.y - 50;
-			last_y = 50;
+			last_y = 25;
 		}
 		else{
 			new_y = last_frame.y;
 			last_y = 0;
 		}
 
-		console.log(new_x);
-		console.log(new_y);
-		var new_frame = {
+		// console.log(new_x);
+		// console.log(new_y);
+		var new_frame = {  // CLick 3
 			key: last_frame.key+1,
 			name: (last_frame.key+1).toString(),
 			height: (last_frame.key+1)*50,
@@ -155,7 +155,7 @@ class App extends React.Component {
 		containers.push(new_frame);
 
 		// console.log(containers);
-		last_frame = {
+		last_frame = {  
 			...last_frame,
 			x: last_x,
 			y: last_y
@@ -173,7 +173,6 @@ class App extends React.Component {
 			<div>
 				<div className="row">
 					<button className="btn btn-primary large" onClick={this.addParent}> Add Parent</button>
-					<button className="btn btn-primary large" onClick={this.printContainers}> Print Containers</button>
 				</div>
 				<div className="row content_body">
 					<Frame containers={this.state.containers}  setFramePos={this.setFramePos} idx={this.state.numContainers} />

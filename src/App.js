@@ -2,76 +2,6 @@ import React from 'react';
 import Frame from './Frame';
 import './App.css';
 
-/*
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			containers: {
-				key: 1,
-				name: "1",
-				height: (1)*50,
-				width: (1)*150,
-				x: 0,
-				y: 0,
-				child: {}
-			},
-			numContainers: 1,
-		}
-
-		this.addParent = this.addParent.bind(this);
-	}
-
-	setFramePos(data) {
-		this.setState({
-			containers: Object.assign({}, this.state.containers, {
-				x: data.x,
-				y: data.y
-			})
-		});
-		console.log(this.state.containers)
-	}
-
-	addParent(event) {
-		const containers = this.state.containers;
-		const numContainers = this.state.numContainers;
-
-		this.setState({
-			containers: {
-				key: numContainers+1,
-				name: (numContainers+1).toString(),
-				height: (numContainers+1)*50,
-				width: (numContainers+1)*150,
-				x: containers.x,
-				y: containers.y,
-				child: containers
-			},
-			numContainers: numContainers + 1
-		});
-	}
-
-	render() {
-		return (
-			<div>
-				<div className="row">
-					<button className="btn btn-primary large" onClick={this.addParent}> Add Parent</button>
-				</div>
-				<div className="row content_body">
-					<Frame containers={this.state.containers}  setFramePos={this.setFramePos}/>
-				</div>
-			</div>
-		);
-	}
-}
-
-export {App};
-
-*/
-
-// Array format
-
-// /*
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -80,8 +10,8 @@ class App extends React.Component {
 			containers: [{
 				key: 1,
 				name: "1",
-				height: (1)*50,
-				width: (1)*150,
+				height: (1)*150,
+				width: (1)*250,
 				x: 0,
 				y: 0,
 			}],
@@ -98,7 +28,8 @@ class App extends React.Component {
 	}
 	
 	setFramePos(data, key) {
-		// const key = parseInt(name);
+		// Function is used to update the position of the given frame when drag stops.
+
 		var containers = [...this.state.containers];
 		var frame = containers[key-1];
 		frame = {
@@ -110,7 +41,6 @@ class App extends React.Component {
 		this.setState({
 			containers: containers
 		})
-		// console.log(this.state.containers)
 	}
 	
 	addParent(event) {
@@ -120,9 +50,9 @@ class App extends React.Component {
 		// Check for horizontal overflow.
 		var new_x;
 		var last_x;
-		if(last_frame.x + last_frame.width + 150 > window.innerWidth){
-			new_x = last_frame.x - 150;
-			last_x = 148;
+		if(last_frame.x + last_frame.width + 250 > window.innerWidth){
+			new_x = last_frame.x - 250;
+			last_x = 248;
 		}
 		else{
 			new_x = last_frame.x;
@@ -132,36 +62,39 @@ class App extends React.Component {
 		// Checking vertical overflow.
 		var new_y;
 		var last_y;
-		if(last_frame.y + last_frame.height + 50 > window.innerHeight){
-			new_y = last_frame.y - 50;
-			last_y = 25;
+		if(last_frame.y + last_frame.height + 150 > window.innerHeight){
+			new_y = last_frame.y - 150;
+			last_y = 125;
 		}
 		else{
 			new_y = last_frame.y;
 			last_y = 0;
 		}
 
-		// console.log(new_x);
-		// console.log(new_y);
-		var new_frame = {  // CLick 3
+		// Creating data for new frame
+		var new_frame = {
 			key: last_frame.key+1,
 			name: (last_frame.key+1).toString(),
-			height: (last_frame.key+1)*50,
-			width: (last_frame.key+1)*150,
+			height: (last_frame.key+1)*150,
+			width: (last_frame.key+1)*250,
 			x: new_x,
 			y: new_y
 		}
 		
+		// add new frame to local copy of containers
 		containers.push(new_frame);
 
-		// console.log(containers);
+		// change the relative position of the last frame to 0,0 w.r.t new frame
 		last_frame = {  
 			...last_frame,
 			x: last_x,
 			y: last_y
 		}
+
+		// Update local copy of containers with the change in last frame
 		containers[this.state.numContainers - 1] = last_frame;
-		// console.log(containers);
+
+		// Use Setstate to update the state
 		this.setState({
 			containers: containers,
 			numContainers: this.state.numContainers + 1
@@ -175,6 +108,7 @@ class App extends React.Component {
 					<button className="btn btn-primary large" onClick={this.addParent}> Add Parent</button>
 				</div>
 				<div className="row content_body">
+					{/* Passing the container array and the frame number to render */}
 					<Frame containers={this.state.containers}  setFramePos={this.setFramePos} idx={this.state.numContainers} />
 				</div>
 			</div>
@@ -183,5 +117,3 @@ class App extends React.Component {
 }
 
 export {App};
-
-// */

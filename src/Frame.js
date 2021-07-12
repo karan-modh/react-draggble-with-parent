@@ -4,12 +4,6 @@ import Draggable from 'react-draggable';
 
 class Frame extends react.Component {
 
-    // handleStop = (event,data) => {
-    //     // console.log(data);
-    //     // console.log(this.props.idx);
-    //     this.props.setFramePos(data, this.props.idx);
-    // };
-
     onControlledDrag = (event, position) => {
         var index = this.props.idx - 1;
         const curr_frame = this.props.containers[index];
@@ -23,7 +17,10 @@ class Frame extends react.Component {
         const containers = [...this.props.containers];
         const curr_frame = containers[index];
         var child_frame;
+
+        // Check if the frame is the last one to render.
         if (this.props.idx > 1) {
+            // Create Child frames with next frame number.
             child_frame = <Frame containers={containers} setFramePos={this.props.setFramePos} idx={index} />
         }
         else {
